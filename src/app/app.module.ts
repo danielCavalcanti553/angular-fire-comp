@@ -13,7 +13,9 @@ import { MenuComponent } from './menu/menu.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import localePt from '@angular/common/locales/pt'; // Local
 import { registerLocaleData } from '@angular/common';
-import { LivrosViewComponent } from './livros-view/livros-view.component'; // Local
+import { LivrosViewComponent } from './livros-view/livros-view.component';
+import { LivrosUpdateComponent } from './livros-update/livros-update.component';
+import { LivrosDeleteComponent } from './livros-delete/livros-delete.component'; // Local
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -25,7 +27,9 @@ registerLocaleData(localePt, 'pt-BR');
     LoginComponent,
     LogoutComponent,
     MenuComponent,
-    LivrosViewComponent
+    LivrosViewComponent,
+    LivrosUpdateComponent,
+    LivrosDeleteComponent
   ],
   imports: [
     BrowserModule,

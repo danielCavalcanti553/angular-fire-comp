@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-livros-new',
@@ -9,10 +10,10 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class LivrosNewComponent implements OnInit {
 
   formGroup : FormGroup;
-  msg : string = null;
+  message : string = null;
 
   constructor(
-    private formBuilder : FormBuilder)  {
+    private formBuilder : FormBuilder, private firestore: AngularFirestore)  {
       this.iniciarForm();
     }
 
@@ -21,14 +22,27 @@ export class LivrosNewComponent implements OnInit {
 
   iniciarForm(){
     this.formGroup= this.formBuilder.group({
-      nome : ['',[Validators.required, Validators.minLength(5),Validators.maxLength(120)] ],
-      telefone: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(16)]],
-      email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(120)]]
+      titulo : ['',[Validators.required]],
+      autor: ['', [Validators.required]],
+      editora: ['', [Validators.required]],
+      resumo: ['', [Validators.required]],
+      preco: ['', [Validators.required]]
+   
+
     })
   }
 
   onSubmit(){
   
+    console.log(this.formGroup.value); 
+  
+    this.firestore.collection('livro').add(this.formGroup.value).then(() =>{
+            this.message = "Cadastrado com sucesso!";
+            this.formGroup.reset();
+          }).catch(()=>{
+            this.message = "Erro ao cadastrar"; 
+          })
+
     
   }
 

@@ -17,5 +17,9 @@
         <div class="col-md-12 label">Resumo</div>
         <div class="col-md-12">{{livro.resumo}}</div>
     </div>
+    <div>
+    <a [routerLink]="['/livros/update/',livro.id]" class="btn btn-warning">Atualizar</a>
+    <a [routerLink]="['/livros/delete/',livro.id]" class="btn btn-danger">Excluir</a>
+    </div>
     </div>
       
