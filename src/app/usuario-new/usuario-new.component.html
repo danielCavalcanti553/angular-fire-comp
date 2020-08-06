@@ -1,0 +1,40 @@
+
+<div class="container">
+    <h1>Novo Usuário</h1>
+
+    <form class="form-horizontal" [formGroup]="formGroup" (ngSubmit)="onSubmit()" >
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="email">email</label>  
+        <div class="col-md-4">
+        <input type="text" id="email" name="email" 
+          formControlName="email" class="form-control input-md" required>
+          <span class="help-block" *ngIf="formGroup.controls.email.errors && formGroup.controls.email.dirty">
+            email inválido</span>
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="senha">senha</label>  
+        <div class="col-md-4">
+          <input type="text" id="senha" name="senha" 
+            formControlName="senha" class="form-control input-md" required>
+            <span class="help-block" *ngIf="formGroup.controls.senha.errors && formGroup.controls.senha.dirty">
+              senha inválido</span>
+      
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Cadastrar"></label>
+        <div class="col-md-4">
+          <button id="Cadastrar" name="Cadastrar" class="btn btn-primary"  [disabled]="formGroup.invalid">Cadastrar</button>
+        </div>
+      </div>
+      
+   
+      </form>
+    </div>
+      

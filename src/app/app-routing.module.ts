@@ -8,6 +8,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { LivrosViewComponent } from './livros-view/livros-view.component';
 import { LivrosUpdateComponent } from './livros-update/livros-update.component';
 import { LivrosDeleteComponent } from './livros-delete/livros-delete.component';
+import { UsuarioNewComponent } from './usuario-new/usuario-new.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -15,7 +16,7 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  
+  { path: 'login/new', component: UsuarioNewComponent },
   { 
     path: 'livros', 
     component: LivrosComponent, 
