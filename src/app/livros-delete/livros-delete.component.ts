@@ -12,10 +12,9 @@ export class LivrosDeleteComponent implements OnInit {
 
   livro : Livro = new Livro();
 
-  constructor(
-    private firestore: AngularFirestore,private route: ActivatedRoute,private router : Router,)  {
+  constructor(private firestore: AngularFirestore, private route: ActivatedRoute, private router : Router)  {
       
-    }
+  }
 
 
   ngOnInit(): void {

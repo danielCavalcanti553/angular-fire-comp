@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Livro } from 'src/model/livro';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
-  selector: 'app-livros-view',
-  templateUrl: './livros-view.component.html',
-  styleUrls: ['./livros-view.component.css']
+  selector: 'app-livro-imagem',
+  templateUrl: './livro-imagem.component.html',
+  styleUrls: ['./livro-imagem.component.css']
 })
-export class LivrosViewComponent implements OnInit {
+export class LivroImagemComponent implements OnInit {
+
   livro : Livro = new Livro();
+  image : any;
   urlImage : any;
-  constructor(private firestore: AngularFirestore,
-    private route: ActivatedRoute,
+
+  constructor(private firestore: AngularFirestore, 
     private storage : AngularFireStorage,
-    private router: Router) {
-    }
+    private route: ActivatedRoute)  {
+  }
+
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe(resp=>{
 
       let id = resp.get('id');
@@ -30,10 +32,16 @@ export class LivrosViewComponent implements OnInit {
         this.download();
       })
     })
-
-    
   }
 
+  upload(event){
+
+    this.image = event.srcElement.files[0];
+
+    this.storage.storage.ref().child(`livro/${this.livro.id}.jpg`).put(this.image).then(data=>{
+      this.download();
+    })
+  }
 
   download(){
     this.storage.storage.ref().child(`livro/${this.livro.id}.jpg`).getDownloadURL().then(data=>{

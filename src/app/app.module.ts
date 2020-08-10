@@ -11,12 +11,15 @@ import { AngularFireModule } from '@angular/fire';
 import { LogoutComponent } from './logout/logout.component';
 import { MenuComponent } from './menu/menu.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import localePt from '@angular/common/locales/pt'; // Local
 import { registerLocaleData } from '@angular/common';
 import { LivrosViewComponent } from './livros-view/livros-view.component';
 import { LivrosUpdateComponent } from './livros-update/livros-update.component';
 import { LivrosDeleteComponent } from './livros-delete/livros-delete.component';
-import { UsuarioNewComponent } from './usuario-new/usuario-new.component'; // Local
+import { UsuarioNewComponent } from './usuario-new/usuario-new.component';
+import { LivroImagemComponent } from './livro-imagem/livro-imagem.component';
+import { PerfilComponent } from './perfil/perfil.component'; // Local
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -31,7 +34,9 @@ registerLocaleData(localePt, 'pt-BR');
     LivrosViewComponent,
     LivrosUpdateComponent,
     LivrosDeleteComponent,
-    UsuarioNewComponent
+    UsuarioNewComponent,
+    LivroImagemComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ registerLocaleData(localePt, 'pt-BR');
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     AngularFireModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }   

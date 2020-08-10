@@ -15,13 +15,14 @@ export class LivrosUpdateComponent implements OnInit {
   message : string = null;
 
   constructor(
-    private formBuilder : FormBuilder, private firestore: AngularFirestore,private route: ActivatedRoute,)  {
+    private formBuilder : FormBuilder, 
+    private firestore: AngularFirestore,
+    private route: ActivatedRoute,)  {
       this.iniciarForm();
     }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(resp=>{
-
       let id = resp.get('id');
       this.firestore.collection('livro').doc(id).snapshotChanges().subscribe(data=>{
         let livro : Livro = data.payload.data() as Livro;
@@ -30,7 +31,6 @@ export class LivrosUpdateComponent implements OnInit {
         this.formGroup.controls['editora'].setValue(livro.editora);
         this.formGroup.controls['preco'].setValue(livro.preco);
         this.formGroup.controls['resumo'].setValue(livro.resumo);
-    
       })
     });
   }

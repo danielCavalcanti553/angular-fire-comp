@@ -2,24 +2,34 @@
 <div class="container">
     <h1>Informações do Livro</h1>
     <div class="row">
-        <div class="col-md-1 label">Título</div>
-        <div class="col-md-11">{{livro.titulo}}</div>
+    <div class="col-md-3">
+        <img src="{{urlImage}}" width="100%" />
+        <p>
+            <a [routerLink]="['/livros/imagem/',livro.id]" class="btn btn-primary">Atualizar Foto</a>
+        </p>
     </div>
-    <div class="row">
-        <div class="col-md-1 label">Autor</div>
-        <div class="col-md-11">{{livro.autor}}</div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-1 label">Título</div>
+            <div class="col-md-11">{{livro.titulo}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 label">Autor</div>
+            <div class="col-md-11">{{livro.autor}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 label">Editora</div>
+            <div class="col-md-11">{{livro.editora}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 label">Resumo</div>
+            <div class="col-md-12">{{livro.resumo}}</div>
+        </div>
+        <div>
+            
+            <a [routerLink]="['/livros/update/',livro.id]" class="btn btn-warning">Atualizar</a>
+            <a [routerLink]="['/livros/delete/',livro.id]" class="btn btn-danger">Excluir</a>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-1 label">Editora</div>
-        <div class="col-md-11">{{livro.editora}}</div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 label">Resumo</div>
-        <div class="col-md-12">{{livro.resumo}}</div>
-    </div>
-    <div>
-    <a [routerLink]="['/livros/update/',livro.id]" class="btn btn-warning">Atualizar</a>
-    <a [routerLink]="['/livros/delete/',livro.id]" class="btn btn-danger">Excluir</a>
-    </div>
-    </div>
-      
+</div>
+</div>
