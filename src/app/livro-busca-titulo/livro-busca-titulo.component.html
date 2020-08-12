@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<div class="container">
+
+    <input [(ngModel)]="name" #ctrl="ngModel" required> <button class="btn btn-primary"
+        (click)="buscar()">Buscar</button>
+
+    <div *ngIf="busca !== ''">
+
+        <h3>Resultado: {{busca}}</h3>
+
+
+
+        <table class="table" *ngIf="resultados === true">
+
+            <tr>
+                <td></td>
+                <th>TITULO</th>
+                <th>NOME</th>
+                <th></th>
+            </tr>
+
+            <tr *ngFor="let livro of itens">
+                <td><img src="{{livro.imgUrl}}" width="60"></td>
+                <td>{{livro.titulo}}</td>
+                <td>{{livro.preco | currency:'BRL'}}</td>
+                <td><a [routerLink]="['/livros/',livro.id]" class="btn btn-primary">Visualizar</a></td>
+            </tr>
+        </table>
+
+        <div *ngIf="resultados === false">Nenhum resultado encontrado</div>
+
+        <a [routerLink]="['/livros/new']" class="btn btn-primary">Novo</a>
+
+    </div>
+
+    
+
+</div>

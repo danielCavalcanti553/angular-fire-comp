@@ -5,13 +5,15 @@
     <table class="table">
 
         <tr>
-            <th>ID</th>
+            <td></td>
+            <th>TITULO</th>
             <th>NOME</th>
             <th></th>
         </tr>
 
         <tr *ngFor="let livro of itens">
-            <td>{{livro.titulo}}</td>
+            <td><img src="{{livro.imgUrl}}" width="60"></td>
+            <td>{{livro.titulo}}</td> 
             <td>{{livro.preco | currency:'BRL'}}</td>
             <td><a [routerLink]="['/livros/',livro.id]" class="btn btn-primary">Visualizar</a></td>
         </tr>

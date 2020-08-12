@@ -5,4 +5,5 @@ export class Livro{
     editora : string;
     preco : number;
     resumo : string;
+    imgUrl : string;
 }

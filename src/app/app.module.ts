@@ -19,7 +19,8 @@ import { LivrosUpdateComponent } from './livros-update/livros-update.component';
 import { LivrosDeleteComponent } from './livros-delete/livros-delete.component';
 import { UsuarioNewComponent } from './usuario-new/usuario-new.component';
 import { LivroImagemComponent } from './livro-imagem/livro-imagem.component';
-import { PerfilComponent } from './perfil/perfil.component'; // Local
+import { PerfilComponent } from './perfil/perfil.component';
+import { LivroBuscaTituloComponent } from './livro-busca-titulo/livro-busca-titulo.component'; // Local
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -36,7 +37,8 @@ registerLocaleData(localePt, 'pt-BR');
     LivrosDeleteComponent,
     UsuarioNewComponent,
     LivroImagemComponent,
-    PerfilComponent
+    PerfilComponent,
+    LivroBuscaTituloComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ registerLocaleData(localePt, 'pt-BR');
     ReactiveFormsModule,
     AngularFireModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule 
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }   

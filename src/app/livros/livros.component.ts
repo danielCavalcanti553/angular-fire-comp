@@ -3,6 +3,7 @@ import { Livro } from 'src/model/livro';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 @Component({
   selector: 'app-livros',
   templateUrl: './livros.component.html',
@@ -12,7 +13,7 @@ export class LivrosComponent implements OnInit {
 
   itens : any[] = [];
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage) {
     
   }
 
@@ -21,27 +22,20 @@ export class LivrosComponent implements OnInit {
       data.map(a=>{
         let livro : Livro = a.payload.doc.data() as Livro;
         livro.id = a.payload.doc.id as string;
-        this.itens.push(livro);
+        this.addLivro(livro);
       })
       console.log(this.itens);
     })
 
- /*
-    this.firestore.collection('livro').valueChanges().subscribe(data=>{
-      this.itens = data;
-      data.forEach(i=>{
-        console.log(i);
-      })
-    });
-    
-
-  
-    this.firestore.collection('livro').get().subscribe(data =>{
-      console.log(data);
-    })*/
-   
   }
 
-  
+  addLivro(livro : Livro){
+    this.storage.storage.ref().child(`livro/${livro.id}.jpg`).getDownloadURL().then(data=>{
+      livro.imgUrl = data;
+      this.itens.push(livro);
+    }).catch(data=>{
+      this.itens.push(livro);
+    })
+  }
 
 }
